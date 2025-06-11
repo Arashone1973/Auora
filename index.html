@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Music Channel Success Blueprint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+        .nav-link.active {
+            color: #0d9488;
+            border-bottom-color: #0d9488;
+        }
+        .card-reveal > div {
+            display: none;
+        }
+        .card-reveal.open > div {
+            display: block;
+        }
+        .tool-card {
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0d9488;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800">
+
+    <header id="header" class="bg-stone-100/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-bold text-teal-600">AI Music Blueprint</h1>
+            <div class="hidden md:flex space-x-8">
+                <a href="#launchpad" class="nav-link text-stone-600 hover:text-teal-600 font-medium border-b-2 border-transparent pb-1">Launchpad</a>
+                <a href="#studio" class="nav-link text-stone-600 hover:text-teal-600 font-medium border-b-2 border-transparent pb-1">AI Studio</a>
+                <a href="#legal" class="nav-link text-stone-600 hover:text-teal-600 font-medium border-b-2 border-transparent pb-1">Legal Desk</a>
+                <a href="#brand" class="nav-link text-stone-600 hover:text-teal-600 font-medium border-b-2 border-transparent pb-1">Brand Blueprint</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-16">
+
+        <section id="hero" class="text-center mb-16 md:mb-24">
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">Unlock Viral Success for Your AI Music Channel</h2>
+            <p class="max-w-3xl mx-auto text-lg text-stone-600">
+                This interactive guide synthesizes expert advice on creating, managing, and monetizing a high-impact AI music remix channel. Navigate through the key pillars of success, from viral growth strategies to the essential tools and legal know-how.
+            </p>
+        </section>
+
+        <!-- Section 1: Launchpad -->
+        <section id="launchpad" class="mb-16 md:mb-24 scroll-mt-20">
+            <div class="text-center mb-12">
+                <span class="text-teal-600 font-semibold">Phase 1</span>
+                <h3 class="text-3xl md:text-4xl font-bold mt-2">The Launchpad: Engineering Virality</h3>
+                <p class="max-w-2xl mx-auto mt-4 text-stone-600">
+                    Going viral isn't just luck; it's a science. This section distills proven strategies for capturing audience attention and sparking explosive growth. Here you'll learn how to craft content that's not just watched, but shared.
+                </p>
+            </div>
+            
+            <!-- Gemini Feature: Viral Idea Generator -->
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-12">
+                <h4 class="text-2xl font-bold text-center mb-2">✨ Viral Idea Generator</h4>
+                <p class="text-center text-stone-600 mb-6 max-w-xl mx-auto">Stuck for an idea? Enter a song or artist and a creative twist, and let AI brainstorm viral concepts for you.</p>
+                <div class="max-w-xl mx-auto">
+                    <div class="grid sm:grid-cols-2 gap-4 mb-4">
+                        <input type="text" id="ideaSong" placeholder="e.g., Beethoven's 5th" class="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500">
+                        <input type="text" id="ideaGenre" placeholder="e.g., as a Lofi Hip-Hop beat" class="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500">
+                    </div>
+                    <button id="generateIdeasBtn" class="w-full bg-teal-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-teal-700 transition-colors flex items-center justify-center">
+                        Generate Ideas
+                    </button>
+                    <div id="ideaLoader" class="hidden justify-center mt-4"><div class="loader"></div></div>
+                    <div id="ideaResults" class="mt-6 text-stone-700 bg-stone-50 p-4 rounded-lg border border-stone-200"></div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- ... existing cards ... -->
+                 <div class="bg-white p-6 rounded-xl shadow-lg card-reveal cursor-pointer">
+                    <h4 class="text-xl font-bold mb-2">The Curiosity Gap Formula</h4>
+                    <p class="text-stone-600 mb-4">Master the art of creating titles and thumbnails that demand a click. Click to see the key principles.</p>
+                    <div class="text-sm text-stone-500 mt-4 border-t pt-4">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong>Ask Questions:</strong> Frame your title as a question the viewer needs answered (e.g., "What if Mozart had a synthesizer?").</li>
+                            <li><strong>Make Declarations:</strong> Use a bold statement that raises questions (e.g., "This AI Ruined a Classic Song").</li>
+                            <li><strong>Describe Missions:</strong> Detail a challenge or goal (e.g., "I Remixed a Song in 10 Different AI Styles").</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg card-reveal cursor-pointer">
+                    <h4 class="text-xl font-bold mb-2">Shareable Content Triggers</h4>
+                    <p class="text-stone-600 mb-4">Tap into the core emotions that drive sharing. Transform passive viewers into active promoters. Click for more.</p>
+                    <div class="text-sm text-stone-500 mt-4 border-t pt-4">
+                        <ul class="list-disc list-inside space-y-2">
+                             <li><strong>Novelty & Surprise:</strong> Combine the familiar with the unexpected (e.g., Sea shanties x Cyberpunk).</li>
+                             <li><strong>Nostalgia:</strong> Remix beloved classics from different eras to evoke powerful memories.</li>
+                             <li><strong>Awe & Wonder:</strong> Create sonically and visually stunning pieces that feel epic in scale.</li>
+                             <li><strong>Relatability:</strong> Frame your remix around a relatable mood or situation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="bg-white p-6 rounded-xl shadow-lg card-reveal cursor-pointer">
+                    <h4 class="text-xl font-bold mb-2">Engagement Maximization</h4>
+                    <p class="text-stone-600 mb-4">High engagement signals value to the YouTube algorithm. Turn your channel into a community hub. Click to learn how.</p>
+                    <div class="text-sm text-stone-500 mt-4 border-t pt-4">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong>Ask for Input:</strong> Run polls to let your audience choose the next song or genre twist.</li>
+                            <li><strong>Respond & Feature:</strong> Actively reply to comments and feature the best ideas or feedback.</li>
+                            <li><strong>Create Playlists:</strong> Group videos by theme or mood to increase watch time.</li>
+                             <li><strong>Use YouTube Shorts:</strong> Post teasers, behind-the-scenes clips, and short-form remixes to reach a wider audience.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                <h4 class="text-2xl font-bold text-center mb-6">Key Factors in YouTube Virality</h4>
+                 <div class="chart-container">
+                    <canvas id="viralityChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: AI Studio -->
+        <section id="studio" class="mb-16 md:mb-24 scroll-mt-20">
+             <div class="text-center mb-12">
+                <span class="text-teal-600 font-semibold">Phase 2</span>
+                <h3 class="text-3xl md:text-4xl font-bold mt-2">The AI Studio: Your Creative Toolkit</h3>
+                <p class="max-w-2xl mx-auto mt-4 text-stone-600">
+                    Your creative output is defined by the tools you master. This section showcases the top AI music generators and software. Use the filters to discover the perfect tool for your next project, from full song generators to specialized MIDI tools.
+                </p>
+            </div>
+            <!-- ... existing studio content ... -->
+            <div class="flex justify-center space-x-2 md:space-x-4 mb-8 flex-wrap gap-y-2">
+                <button data-filter="all" class="tool-filter active bg-teal-600 text-white px-4 py-2 rounded-full text-sm font-medium">All Tools</button>
+                <button data-filter="song" class="tool-filter bg-white text-stone-700 px-4 py-2 rounded-full text-sm font-medium">Song Generators</button>
+                <button data-filter="midi" class="tool-filter bg-white text-stone-700 px-4 py-2 rounded-full text-sm font-medium">MIDI & Instrumental</button>
+                <button data-filter="vocal" class="tool-filter bg-white text-stone-700 px-4 py-2 rounded-full text-sm font-medium">Vocal & Stem Tools</button>
+            </div>
+
+            <div id="tool-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tool cards will be injected here by JS -->
+            </div>
+        </section>
+        
+        <!-- Section 3: Legal -->
+        <section id="legal" class="mb-16 md:mb-24 scroll-mt-20">
+            <!-- ... existing legal content ... -->
+            <div class="text-center mb-12">
+                <span class="text-teal-600 font-semibold">Phase 3</span>
+                <h3 class="text-3xl md:text-4xl font-bold mt-2">The Legal Desk: Navigating Copyright</h3>
+                <p class="max-w-2xl mx-auto mt-4 text-stone-600">
+                   The intersection of AI and copyright is complex but navigable. Understanding the rules is essential for protecting your channel and monetizing your work. This section provides a clear, actionable guide based on current understanding from the US Copyright Office.
+                </p>
+            </div>
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-2xl font-bold text-green-600 mb-4 flex items-center"><span class="text-3xl mr-3">✓</span>Do's</h4>
+                        <ul class="space-y-4 text-stone-700">
+                            <li class="flex">
+                                <span class="text-green-500 font-bold mr-3 mt-1">●</span>
+                                <div><strong>Disclose AI Use:</strong> Always be transparent about the use of AI when registering work with the Copyright Office.</div>
+                            </li>
+                             <li class="flex">
+                                <span class="text-green-500 font-bold mr-3 mt-1">●</span>
+                                <div><strong>Claim Human Authorship:</strong> Focus your copyright claim on the parts of the work you created—the arrangement, production, new lyrics, and other significant creative contributions.</div>
+                            </li>
+                             <li class="flex">
+                                <span class="text-green-500 font-bold mr-3 mt-1">●</span>
+                                <div><strong>Modify & Transform:</strong> Ensure there is substantial human creativity involved. Use AI as a tool to assist, not as a replacement for, your own expression. The more you modify, the stronger your claim.</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold text-red-600 mb-4 flex items-center"><span class="text-3xl mr-3">✗</span>Don'ts</h4>
+                        <ul class="space-y-4 text-stone-700">
+                             <li class="flex">
+                                <span class="text-red-500 font-bold mr-3 mt-1">●</span>
+                                <div><strong>Don't Credit the AI:</strong> You cannot list an AI model or its developer as an author or co-author of your work. Copyright law recognizes human authors only.</div>
+                            </li>
+                            <li class="flex">
+                                <span class="text-red-500 font-bold mr-3 mt-1">●</span>
+                                <div><strong>Don't Copyright Just Prompts:</strong> A text prompt alone is considered an idea, not a creative expression, and cannot be copyrighted. The output from a simple prompt is not protectable.</div>
+                            </li>
+                            <li class="flex">
+                                <span class="text-red-500 font-bold mr-3 mt-1">●</span>
+                                <div><strong>Don't Assume Full Ownership:</strong> You cannot claim copyright over the raw, unedited output of a generative AI. You only own your creative contributions to it.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 text-center text-sm text-stone-500 border-t pt-4">
+                    <strong>Disclaimer:</strong> This is a simplified guide for informational purposes and is not legal advice. Always consult with a legal professional for specific copyright matters.
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Brand -->
+        <section id="brand" class="scroll-mt-20">
+            <div class="text-center mb-12">
+                <span class="text-teal-600 font-semibold">Phase 4</span>
+                <h3 class="text-3xl md:text-4xl font-bold mt-2">The Brand Blueprint: Building a Legacy</h3>
+                <p class="max-w-2xl mx-auto mt-4 text-stone-600">
+                    A viral hit is temporary, but a strong brand is sustainable. The final phase is about building a recognizable identity that attracts a loyal audience and opens diverse monetization doors beyond AdSense.
+                </p>
+            </div>
+            
+             <!-- Gemini Feature: Brand Identity Generator -->
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-12 max-w-4xl mx-auto">
+                <h4 class="text-2xl font-bold text-center mb-2">✨ Brand Identity Generator</h4>
+                <p class="text-center text-stone-600 mb-6 max-w-xl mx-auto">Describe your channel's vibe, and let AI suggest names, taglines, and a visual identity to get you started.</p>
+                <div class="max-w-xl mx-auto">
+                    <div class="mb-4">
+                        <input type="text" id="brandVibe" placeholder="e.g., '80s retro, nostalgic, synthwave, neon'" class="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500">
+                    </div>
+                    <button id="generateBrandBtn" class="w-full bg-teal-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-teal-700 transition-colors flex items-center justify-center">
+                        Generate Brand Identity
+                    </button>
+                    <div id="brandLoader" class="hidden justify-center mt-4"><div class="loader"></div></div>
+                    <div id="brandResults" class="mt-6 text-stone-700 bg-stone-50 p-4 rounded-lg border border-stone-200"></div>
+                </div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                 <!-- ... existing brand content ... -->
+                 <div class="grid md:grid-cols-3 gap-4 text-center">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">🎨</div>
+                        <h4 class="text-xl font-bold mb-2">1. Define Your Sound</h4>
+                        <p class="text-stone-600 text-sm">Establish a signature style. Are you known for orchestral epics? Lo-fi chill? Cinematic darkness? A consistent sound makes you recognizable.</p>
+                    </div>
+                    <div class="relative flex items-center justify-center">
+                        <div class="w-full border-t-2 border-dashed border-stone-300"></div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">🖼️</div>
+                        <h4 class="text-xl font-bold mb-2">2. Craft Visual Identity</h4>
+                        <p class="text-stone-600 text-sm">Develop a cohesive look for thumbnails, channel art, and in-video graphics. Consistency builds brand recognition and trust.</p>
+                    </div>
+                </div>
+                 <div class="grid grid-cols-1 md:grid-cols-3 my-4">
+                    <div></div>
+                    <div class="relative flex items-center justify-center -my-2">
+                         <div class="h-full border-l-2 border-dashed border-stone-300"></div>
+                    </div>
+                     <div></div>
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-lg max-w-sm mx-auto">
+                    <div class="text-4xl mb-4 text-center">🏆</div>
+                    <h4 class="text-xl font-bold mb-2 text-center">3. Monetize Diversely</h4>
+                    <p class="text-stone-600 text-sm">
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><strong>Brand Deals:</strong> Partner with AI software or audio gear companies.</li>
+                            <li><strong>Custom Services:</strong> Offer bespoke AI remixes for clients.</li>
+                            <li><strong>Digital Products:</strong> Sell "AI-inspired" sample packs or project files.</li>
+                            <li><strong>Memberships:</strong> Use Patreon for exclusive content and early access.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-stone-200 mt-16 md:mt-24">
+        <div class="container mx-auto px-6 py-8 text-center text-stone-600">
+            <p>AI Music Channel Success Blueprint</p>
+            <p class="text-sm mt-2">Distilling insights for the next generation of digital creators.</p>
+        </div>
+    </footer>
+    
+    <!-- Modal for Messages -->
+    <div id="messageModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-2xl max-w-sm w-full">
+            <h4 id="modalTitle" class="text-xl font-bold mb-4">Message</h4>
+            <p id="modalMessage" class="text-stone-600 mb-6">This is a message.</p>
+            <button id="modalCloseBtn" class="w-full bg-teal-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-teal-700 transition-colors">Close</button>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Existing Chart.js, Tool Filter, and other UI logic ---
+
+            // Data for the application
+            const toolsData = [
+                { name: 'Suno AI', category: 'song', description: 'Generates full songs with vocals and instruments from text prompts. Known for high-quality, creative outputs.' },
+                { name: 'Udio', category: 'song', description: 'A strong competitor to Suno, offering text-to-music and audio extension features.' },
+                { name: 'Riffusion', category: 'song', description: 'Generates music with matching vocals and instrumentals from lyrics and style prompts.' },
+                { name: 'Soundraw.io', category: 'midi', description: 'Creates high-quality, royalty-free background music and instrumentals for content creators.' },
+                { name: 'HookPad Aria', category: 'midi', description: 'An AI MIDI generator that helps create original chord progressions and melodies within a music theory framework.' },
+                { name: 'Lemonaide', category: 'midi', description: 'An in-DAW AI MIDI generator popular with beat makers for quickly creating chords and melodies.' },
+                { name: 'Lalal.ai', category: 'vocal', description: 'A high-quality AI stem splitter used to separate vocals from instrumental tracks, and vice-versa.' },
+                { name: 'MusicFX (Google)', category: 'midi', description: 'Delivers highly accurate text-to-song generation, focusing on instrumental output.' },
+                { name: 'SongR', category: 'song', description: 'Transforms text into songs in various genres, focusing on custom lyric integration.' },
+            ];
+
+            // Virality Chart
+            const ctx = document.getElementById('viralityChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Content Novelty', 'Thumbnail/Title', 'Audience Engagement', 'Timing & Trends', 'Production Quality'],
+                    datasets: [{
+                        label: 'Impact on Virality',
+                        data: [90, 85, 80, 70, 65],
+                        backgroundColor: [
+                            'rgba(13, 148, 136, 0.6)', 'rgba(8, 126, 126, 0.6)', 'rgba(15, 118, 110, 0.6)', 'rgba(17, 94, 89, 0.6)', 'rgba(20, 83, 45, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(13, 148, 136, 1)', 'rgba(8, 126, 126, 1)', 'rgba(15, 118, 110, 1)', 'rgba(17, 94, 89, 1)', 'rgba(20, 83, 45, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                    scales: {
+                        x: { beginAtZero: true, max: 100, ticks: { color: '#57534e' }, grid: { color: '#e7e5e4' } },
+                        y: { ticks: { color: '#57534e' }, grid: { display: false } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.x !== null) { label += context.parsed.x + '% Importance'; }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Card Reveal Interaction
+            const revealCards = document.querySelectorAll('.card-reveal');
+            revealCards.forEach(card => card.addEventListener('click', () => card.classList.toggle('open')));
+
+            // Tool Filtering Logic
+            const toolGrid = document.getElementById('tool-grid');
+            const filterButtons = document.querySelectorAll('.tool-filter');
+
+            const renderTools = (filter = 'all') => {
+                toolGrid.innerHTML = '';
+                const filteredTools = (filter === 'all') ? toolsData : toolsData.filter(tool => tool.category === filter);
+                filteredTools.forEach(tool => {
+                    const toolCard = document.createElement('div');
+                    toolCard.className = `tool-card bg-white p-6 rounded-xl shadow-lg`;
+                    toolCard.innerHTML = `<h4 class="text-xl font-bold mb-2">${tool.name}</h4><p class="text-stone-600 text-sm">${tool.description}</p>`;
+                    toolGrid.appendChild(toolCard);
+                });
+            };
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-teal-600', 'text-white');
+                        btn.classList.add('bg-white', 'text-stone-700');
+                    });
+                    button.classList.add('active', 'bg-teal-600', 'text-white');
+                    button.classList.remove('bg-white', 'text-stone-700');
+                    renderTools(filter);
+                });
+            });
+            renderTools();
+
+            // Nav link active state on scroll
+            const sections = document.querySelectorAll('main section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-50% 0px -50% 0px' });
+            sections.forEach(section => observer.observe(section));
+            
+            // --- NEW: Gemini API and Modal Logic ---
+            const ideaResultsEl = document.getElementById('ideaResults');
+            const brandResultsEl = document.getElementById('brandResults');
+            ideaResultsEl.style.display = 'none';
+            brandResultsEl.style.display = 'none';
+
+            // Modal handling
+            const modal = document.getElementById('messageModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+            const showModal = (title, message) => {
+                modalTitle.textContent = title;
+                modalMessage.textContent = message;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            };
+            const hideModal = () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            };
+            modalCloseBtn.addEventListener('click', hideModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    hideModal();
+                }
+            });
+
+
+            /**
+             * Calls the Gemini API to generate text content.
+             * @param {string} prompt The prompt to send to the model.
+             * @returns {Promise<string>} The generated text from the model.
+             */
+            async function callGemini(prompt) {
+                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // API key is handled by the execution environment.
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        const errorBody = await response.json();
+                        console.error('API Error:', errorBody);
+                        throw new Error(`API request failed with status ${response.status}. See console for details.`);
+                    }
+
+                    const result = await response.json();
+                    
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        // Replace markdown with simple HTML for display
+                        let text = result.candidates[0].content.parts[0].text;
+                        text = text.replace(/(\r\n|\n|\r)/gm, "<br>"); // newlines to <br>
+                        text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // **bold** to <strong>
+                        text = text.replace(/\*(.*?)\*/g, '<em>$1</em>'); // *italic* to <em>
+                        return text;
+                    } else {
+                        console.error('Unexpected API response structure:', result);
+                        throw new Error('Could not extract text from the API response.');
+                    }
+                } catch (error) {
+                    console.error('Fetch error:', error);
+                    throw error; // Re-throw the error to be caught by the caller
+                }
+            }
+
+            // Viral Idea Generator Logic
+            const generateIdeasBtn = document.getElementById('generateIdeasBtn');
+            const ideaLoader = document.getElementById('ideaLoader');
+            generateIdeasBtn.addEventListener('click', async () => {
+                const song = document.getElementById('ideaSong').value.trim();
+                const genre = document.getElementById('ideaGenre').value.trim();
+
+                if (!song || !genre) {
+                    showModal('Input Required', 'Please provide both a song/artist idea and a creative twist.');
+                    return;
+                }
+
+                ideaLoader.style.display = 'flex';
+                generateIdeasBtn.disabled = true;
+                ideaResultsEl.style.display = 'none';
+
+                const prompt = `You are a viral marketing expert for YouTube. Generate 3 creative, viral-worthy video ideas for an AI music channel. The user wants to remix "${song}" in the style of "${genre}".
+                For each idea, provide:
+                1. A catchy, click-worthy Title that creates a curiosity gap.
+                2. A short, exciting Concept description (1-2 sentences).
+                Format the response clearly using bold for titles.`;
+
+                try {
+                    const resultText = await callGemini(prompt);
+                    ideaResultsEl.innerHTML = resultText;
+                    ideaResultsEl.style.display = 'block';
+                } catch (e) {
+                    showModal('API Error', `An error occurred while generating ideas: ${e.message}. Please check the console and try again later.`);
+                } finally {
+                    ideaLoader.style.display = 'none';
+                    generateIdeasBtn.disabled = false;
+                }
+            });
+
+            // Brand Identity Generator Logic
+            const generateBrandBtn = document.getElementById('generateBrandBtn');
+            const brandLoader = document.getElementById('brandLoader');
+            generateBrandBtn.addEventListener('click', async () => {
+                const vibe = document.getElementById('brandVibe').value.trim();
+                if (!vibe) {
+                    showModal('Input Required', 'Please describe the vibe or theme for your channel.');
+                    return;
+                }
+
+                brandLoader.style.display = 'flex';
+                generateBrandBtn.disabled = true;
+                brandResultsEl.style.display = 'none';
+
+                const prompt = `You are a branding consultant for YouTube creators. A user is starting an AI music channel with the following vibe/theme: "${vibe}".
+                Generate a brand identity kit for them. Provide the following:
+                1.  **Channel Name Suggestions:** 3 unique and memorable names.
+                2.  **Tagline Ideas:** 3 short, catchy taglines for their channel banner.
+                3.  **Visual Identity Concept:** Describe a cohesive visual style, including color palette, font styles, and thumbnail design principles.
+                Format the response clearly with bold headings.`;
+                
+                try {
+                    const resultText = await callGemini(prompt);
+                    brandResultsEl.innerHTML = resultText;
+                    brandResultsEl.style.display = 'block';
+                } catch (e) {
+                    showModal('API Error', `An error occurred while generating brand ideas: ${e.message}. Please check the console and try again later.`);
+                } finally {
+                    brandLoader.style.display = 'none';
+                    generateBrandBtn.disabled = false;
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
